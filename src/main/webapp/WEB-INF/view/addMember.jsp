@@ -3,11 +3,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>login.jsp</title>
+<title>addMember.jsp</title>
 </head>
 <body>
-	<h1>로그인</h1>
-	<form method="post" action="${pageContext.request.contextPath}/login">
+	<h1>회원가입</h1>
+	<form method="post" action="${pageContext.request.contextPath}/addMember">
 		<table border="1">
 			<tr>
 				<td>memberId</td>
@@ -18,8 +18,7 @@
 				<td><input type="password" name="memberPw"></td>
 			</tr>
 		</table>
-		<button type="submit">로그인</button>
-		<a href="${pageContext.request.contextPath}/addMember">회원가입</a>
+		<button type="submit">회원가입</button>
 	</form>
 </body>
 </html>
