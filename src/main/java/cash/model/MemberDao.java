@@ -8,6 +8,65 @@ import java.sql.ResultSet;
 import cash.vo.Member;
 
 public class MemberDao {
+	// 회원정보 수정
+	public int updateMember(String memberId, String memberPw, String newPw1, String newPw2) {
+		int row = 0;
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		// 조회
+		String selectSql = "SELECT COUNT(*) FROM member WHERE member_id=? AND member_pw= PASSWORD(?)";
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			stmt = conn.prepareStatement(selectSql);
+			stmt.setString(1, memberId);
+			stmt.setString(2, memberPw);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				row = rs.getInt(1);
+			}
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		// 조회가 되는 행이 있으면
+		if(row>0 && newPw1.equals(newPw2)) {	
+			String updateSql = "UPDATE member SET member_pw = PASSWORD(?), updatedate = NOW() WHERE member_id = ?";
+			try {
+				Class.forName("org.mariadb.jdbc.Driver");
+				conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+				stmt = conn.prepareStatement(updateSql);
+				stmt.setString(1, newPw1);
+				stmt.setString(2, memberId);
+				row = stmt.executeUpdate();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			} finally {
+				try {
+					rs.close();
+					stmt.close();
+					conn.close();
+				} catch(Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+		}
+		return row;
+	}
+	
+	
+	
+	
+	
 	// 회원 탈퇴
 	public int deleteMember(String memberId, String memberPw) {
 		int row = 0;
@@ -45,6 +104,7 @@ public class MemberDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
+		
 		String sql = "SELECT member_id memberId, member_pw memberPw, updatedate, createdate FROM member WHERE member_id = ?";
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -108,6 +168,7 @@ public class MemberDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
+		
 		String sql = "SELECT member_id memberId FROM member WHERE member_id=? AND member_pw = PASSWORD(?)";
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");

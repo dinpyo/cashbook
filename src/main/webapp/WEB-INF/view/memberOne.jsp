@@ -14,7 +14,7 @@
 			</tr>
 			<tr>
 				<td>memberPw</td>
-				<td>${member.memberPw}</td>
+				<td>****</td>
 			</tr>
 			<tr>
 				<td>updatedate</td>
@@ -25,7 +25,7 @@
 				<td>${member.createdate}</td>
 			</tr>
 		</table>
-		<a href="/modifyMember">회원정보수정</a>
+		<a href="${pageContext.request.contextPath}/modifyMember">회원정보수정</a>
 		<a href="${pageContext.request.contextPath}/removeMember">회원탈퇴</a>
 </body>
 </html>
