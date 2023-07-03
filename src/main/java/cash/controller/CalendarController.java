@@ -36,13 +36,11 @@ public class CalendarController extends HttpServlet {
 		firstDay.set(Calendar.DATE, 1);
 		
 		// 출력하고자하는 년도와 월이 매개값으로 넘어왔다면
-		if(request.getParameter("targetYear") != null 
-				&& request.getParameter("targetMonth") != null) {
+		if(request.getParameter("targetYear") != null && request.getParameter("targetMonth") != null) {
 			firstDay.set(Calendar.YEAR, Integer.parseInt(request.getParameter("targetYear")));
 			// API에서 자동으로 Calendar.MONTH값으로 12가 입력되면 월은 1, 년 +1
 			// API에서 자동으로 Calendar.MONTH값으로 -1이 입력되면 월은 12, 년 -1
 			firstDay.set(Calendar.MONTH, Integer.parseInt(request.getParameter("targetMonth")));
-
 		}
 		int targetYear = firstDay.get(Calendar.YEAR);
 		int targetMonth = firstDay.get(Calendar.MONTH);

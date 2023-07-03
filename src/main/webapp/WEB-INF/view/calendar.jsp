@@ -48,7 +48,11 @@
 				
 				<c:if test="${!(d < 1 || d > lastDate)}">
 					<td>
-						<div>${d}</div>
+						<div>
+							<a href="${pageContext.request.contextPath}/cashbookOne?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${d}">
+								${d}
+							</a>
+						</div>
 						<c:forEach var="c" items="${list}">
 							<c:if test="${d == fn:substring(c.cashbookDate,8,10)}">
 								<div>
