@@ -12,17 +12,41 @@
 	table, th, td {
 		border: 1px solid #bcbcbc;
 	}
-	
 	table {
 		width: 50%;
+		height: 50%;
 	}
 </style>
 </head>
 <body>
+	<!-- 변수값or반환값 : EL사용 $ 표현식 -->
+	<!-- 
+		속성값대신 EL사용 
+		ex) 
+		request.getAttribute("targetYear") -- requestScope.targetYear 
+		(requestScope는 생략가능)
+		형변환연산이 필요없다(EL이 자동으로 처리)
+	-->
+	
+	<!-- 자바코드(제어문) : JSTL 사용 -->
 	
 	<h1>${targetYear}년 ${targetMonth+1}월</h1>
 	<a href="${pageContext.request.contextPath}/calendar?targetYear=${targetYear}&targetMonth=${targetMonth-1}">이전</a>
 	<a href="${pageContext.request.contextPath}/calendar?targetYear=${targetYear}&targetMonth=${targetMonth+1}">다음</a>
+	
+	<div>
+		<h2>이달의 해시태그</h2>
+		<div>
+			<c:forEach var="m" items="${htList}">
+				<a href="${pageContext.request.contextPath}/hashtagOne?targetYear=${targetYear}&targetMonth=${targetMonth}&word=${m.word}">
+					${m.word}(${m.cnt}) 
+				</a>
+			</c:forEach>
+		</div>
+	</div>
+	
+	<br>
+	
 	
 	<table>
 		<tr>
@@ -45,7 +69,7 @@
 					<c:if test="${d > 0 && d <= lastDate}">
 						<td>
 							<div>  	 
-								<a href="${pageContext.request.contextPath}/cashbookOne?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${d}">
+								<a style="color:#000000; text-decoration:none;" href="${pageContext.request.contextPath}/cashbookOne?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${d}">
 								
 									<c:if test="${i%7 == 0}">
 										<span style="color:red;">${d}</span>
