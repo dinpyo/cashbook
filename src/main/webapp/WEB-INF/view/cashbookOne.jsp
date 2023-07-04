@@ -10,7 +10,6 @@
 	table, th, td {
 		border: 1px solid #bcbcbc;
 	}
-	
 	table {
 		width: 50%;
 	}
@@ -42,5 +41,8 @@
 				</tr>
 			</c:forEach>
 	</table>
+	<a href="${pageContext.request.contextPath}/addCashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${targetDate}">
+		추가
+	</a>
 </body>
 </html>

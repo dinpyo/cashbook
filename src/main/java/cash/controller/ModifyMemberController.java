@@ -18,6 +18,7 @@ public class ModifyMemberController extends HttpServlet {
 	// 회원정보 수정 폼
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// session 검사
 		HttpSession session = request.getSession();
 		if(session.getAttribute("loginMember") == null) {
 			response.sendRedirect(request.getContextPath()+"/login");
@@ -29,6 +30,7 @@ public class ModifyMemberController extends HttpServlet {
 	// 회원정보 수정
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// session 검사
 		HttpSession session = request.getSession();
 		if(session.getAttribute("loginMember") == null) {
 			response.sendRedirect(request.getContextPath()+"/cashbook");

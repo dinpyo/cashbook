@@ -4,15 +4,60 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import cash.vo.Cashbook;
 
 public class CashbookDao {
-	// 수입 지출 상세보기
-	public List<Cashbook> selectCashbookOne(String memberId, int targetYear, int targetMonth, int targetDate){
+	// 수입과 지출 입력
+	// 반환값 : cashbook_no 키값
+	public int insertCashbook(Cashbook cashbook) {
+		int cashbookNo = 0;
 		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null; // 입력후 생성된 키값 반환
+		try {
+			String driver = "org.mariadb.jdbc.Driver";
+			String dbUrl = "jdbc:mariadb://127.0.0.1:3306/cash";
+			String dbUser = "root";
+			String dbPw = "java1234";
+			Class.forName(driver);
+			conn = DriverManager.getConnection(dbUrl, dbUser, dbPw);
+			String sql = "INSERT INTO"
+					+ " cashbook(member_id, category, cashbook_date, price, memo, updatedate, createdate)"
+					+ " VALUES(?, ?, ?, ?, ?, NOW(), NOW())";
+			stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			stmt.setString(1, cashbook.getMemberId());
+			stmt.setString(2, cashbook.getCategory());
+			stmt.setString(3, cashbook.getCashbookDate());
+			stmt.setInt(4, cashbook.getPrice());
+			stmt.setString(5, cashbook.getMemo());
+			System.out.println(stmt);
+			int row = stmt.executeUpdate();
+			rs = stmt.getGeneratedKeys();
+			if(rs.next()) {
+				cashbookNo = rs.getInt(1);
+			}
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				conn.close();
+			} catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cashbookNo;
+	}
+	
+	// 수입과 지출 상세보기
+	public List<Cashbook> selectCashbookOne(String memberId, int targetYear, int targetMonth, int targetDate){
 		List<Cashbook> list = new ArrayList<Cashbook>();
 		
 		Connection conn = null;
