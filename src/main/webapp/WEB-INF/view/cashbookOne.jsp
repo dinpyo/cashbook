@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>cashbookOne.jsp</title>
 <style>
 	table, th, td {
 		border: 1px solid #bcbcbc;
@@ -17,19 +17,27 @@
 </style>
 </head>
 <body>
-	<h1>수입/지출 내역</h1>
+	<a href="${pageContext.request.contextPath}/calendar">이전으로</a>
+	<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+	<h1>${targetYear}년 ${targetMonth+1}월 ${targetDate}일 수입/지출 내역</h1>
 	<table>
-		<tr>
+		<tr>	
+			<th>번호</th>
 			<th>수입/지출</th>
+			<th>날짜</th>	
 			<th>금액</th>
 			<th>메모</th>
+			<th>수정날짜</th>
 			<th>작성날짜</th>
 		</tr>
 			<c:forEach var="c" items="${list}">
 				<tr>
+					<td>${c.cashbookNo}</td>
 					<td>${c.category}</td>
+					<td>${c.cashbookDate}</td>
 					<td>${c.price}</td>
-					<td>${c.memo}</td>
+					<td>${c.memo}</td>		
+					<td>${c.updatedate}</td>
 					<td>${c.createdate}</td>
 				</tr>
 			</c:forEach>

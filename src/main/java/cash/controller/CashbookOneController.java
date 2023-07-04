@@ -39,8 +39,10 @@ public class CashbookOneController extends HttpServlet {
 		// 모델을 호출
 		List<Cashbook> list = new CashbookDao().selectCashbookOne(memberId, targetYear, targetMonth+1, targetDate);
 		
+		request.setAttribute("targetYear", targetYear);
+		request.setAttribute("targetMonth", targetMonth);
+		request.setAttribute("targetDate", targetDate);
 		request.setAttribute("list", list);
-		
 		
 		request.getRequestDispatcher("/WEB-INF/view/cashbookOne.jsp").forward(request, response);
 	}
