@@ -9,12 +9,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	table, th, td {
+	tr, th, td {
 		border: 1px solid #bcbcbc;
+		width: 10%;
+		height: 10%;
 	}
 	table {
-		width: 50%;
-		height: 50%;
+		border: 1px solid #bcbcbc;
+		width: 60%;
+		height: 80%;
 	}
 </style>
 </head>
@@ -35,15 +38,27 @@
 	<a href="${pageContext.request.contextPath}/calendar?targetYear=${targetYear}&targetMonth=${targetMonth+1}">다음</a>
 	
 	<div>
-		<h2>이달의 해시태그</h2>
+		<h2>해시태그 전체보기</h2>
 		<div>
 			<c:forEach var="m" items="${htList}">
-				<a href="${pageContext.request.contextPath}/hashtagOne?targetYear=${targetYear}&targetMonth=${targetMonth}&word=${m.word}">
-					${m.word}(${m.cnt}) 
+				<a style="color:#9900CC; text-decoration:none;" href="${pageContext.request.contextPath}/cashbookListByTag?word=${m.word}">
+					[${m.word}]  
 				</a>
 			</c:forEach>
 		</div>
 	</div>
+
+	<div>
+		<h2>이달의 해시태그</h2>
+		<div>
+			<c:forEach var="m" items="${htList}">
+				<a style="color:#9900CC; text-decoration:none;" href="${pageContext.request.contextPath}/hashtagOne?targetYear=${targetYear}&targetMonth=${targetMonth}&word=${m.word}">
+					[${m.word}(${m.cnt})]  
+				</a>
+			</c:forEach>
+		</div>
+	</div>
+	
 	
 	<br>
 	

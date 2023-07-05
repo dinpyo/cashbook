@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>hashOne.jsp</title>
+<title>cashbookListByTag.jsp</title>
 <style>
 	table, th, td {
 		border: 1px solid #bcbcbc;
@@ -17,7 +17,15 @@
 </head>
 <body>
 	<a href="${pageContext.request.contextPath}/calendar">이전으로</a>
-	<h1>${targetYear}년 ${targetMonth+1}월 #${word} 해시태그 리스트</h1>
+	<h1>#${word} 해시태그 전체 리스트</h1>
+	
+	<c:if test="${currentPage > 1}">
+		<a href="${pageContext.request.contextPath}/cashbookListByTag?word=${word}&currentPage=${currentPage-1}">이전</a>
+	</c:if>
+	<span>${currentPage}</span>
+	<c:if test="${currentPage < lastPage}">
+		<a href="${pageContext.request.contextPath}/cashbookListByTag?word=${word}&currentPage=${currentPage+1}">다음</a>
+	</c:if>
 	<table>
 		<tr>
 			<th>번호</th>
@@ -33,20 +41,14 @@
 		<tr>
 			<td>${m.cashbookNo}</td>
 			<td>${m.category}</td>
-			<td>
-				<a href="${pageContext.request.contextPath}/cashbookOne?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${m.targetDate}">
-					${m.cashbookDate}
-				</a>
-			</td>
+			<td>${m.cashbookDate}</td>
 			<td>${m.price}</td>
 			<td>${m.memo}</td>
 			<td>${m.updatedate}</td>
 			<td>${m.createdate}</td>
 		</tr>
 		</c:forEach>
-	
-	
-	
+
 	
 	</table>
 </body>

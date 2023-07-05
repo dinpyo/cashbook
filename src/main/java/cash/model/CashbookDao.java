@@ -56,6 +56,107 @@ public class CashbookDao {
 		return cashbookNo;
 	}
 	
+	// 해쉬태그 별 전체 리스트
+	public List<Cashbook> selectCashbookListByTag(String memberId, String word, int beginRow, int rowPerPage) {
+		List<Cashbook> list = new ArrayList<Cashbook>();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT h.cashbook_no cashbookNo, c.category category, c.cashbook_date cashbookDate, c.price price, c.memo memo, c.updatedate updatedate, c.createdate createdate "
+					+ " FROM cashbook c INNER JOIN hashtag h"
+					+ " ON c.cashbook_no = h.cashbook_no"
+					+ " WHERE c.member_id =? AND h.word = ?"
+					+ " ORDER BY c.cashbook_date DESC"
+					+ " LIMIT ?, ?";
+		try {
+			String driver = "org.mariadb.jdbc.Driver";
+			String dbUrl = "jdbc:mariadb://127.0.0.1:3306/cash";
+			String dbUser = "root";
+			String dbPw = "java1234";
+			Class.forName(driver);
+			conn = DriverManager.getConnection(dbUrl, dbUser, dbPw);
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, memberId);
+			stmt.setString(2, word);
+			stmt.setInt(3, beginRow);
+			stmt.setInt(4, rowPerPage);
+			System.out.println(stmt);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				Cashbook c = new Cashbook();
+				c.setCashbookNo(rs.getInt("cashbookNo"));
+				c.setCategory(rs.getString("category"));
+				c.setCashbookDate(rs.getString("cashbookDate"));
+				c.setPrice(rs.getInt("price"));
+				c.setMemo(rs.getString("memo"));
+				c.setUpdatedate(rs.getString("updatedate"));
+				c.setCreatedate(rs.getString("createdate"));
+				list.add(c);
+			}
+		} catch(Exception e1) {
+			e1.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				conn.close();
+			} catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return list;
+	}
+	
+	// 해쉬태그 별 전체 개수
+	public int selectCashbookListByTagCnt(String memberId, String word) {
+		
+		int row = 0;
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT COUNT(*)"
+				+ " FROM cashbook c INNER JOIN hashtag h"
+				+ " ON c.cashbook_no = h.cashbook_no"
+				+ " WHERE c.member_id =? AND h.word = ?";
+		try {
+			String driver = "org.mariadb.jdbc.Driver";
+			String dbUrl = "jdbc:mariadb://127.0.0.1:3306/cash";
+			String dbUser = "root";
+			String dbPw = "java1234";
+			Class.forName(driver);
+			conn = DriverManager.getConnection(dbUrl, dbUser, dbPw);
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, memberId);
+			stmt.setString(2, word);
+			
+			System.out.println(stmt);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				row = rs.getInt(1);
+			}
+		} catch(Exception e1) {
+			e1.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				conn.close();
+			} catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return row;
+	}
+	
+	
+	
+
+
+	
 	// 수입과 지출 상세보기
 	public List<Cashbook> selectCashbookOne(String memberId, int targetYear, int targetMonth, int targetDate){
 		List<Cashbook> list = new ArrayList<Cashbook>();
@@ -107,6 +208,8 @@ public class CashbookDao {
 		
 		return list;
 	}
+
+	
 		
 	// 달력에 수입 지출 표시
 	public List<Cashbook> selectCashbookListByMonth(String memberId, int targetYear, int targetMonth) {
