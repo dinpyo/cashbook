@@ -19,11 +19,9 @@ public class HashtagDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			String driver = "org.mariadb.jdbc.Driver";
 			String dbUrl = "jdbc:mariadb://127.0.0.1:3306/cash";
 			String dbUser = "root";
 			String dbPw = "java1234";
-			Class.forName(driver);
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPw);
 			String sql = "SELECT h.cashbook_no cashbookNo, c.category category, c.cashbook_date cashbookDate, c.price price, c.memo memo, c.updatedate updatedate, c.createdate createdate, SUBSTRING(c.cashbook_date, 9 ,10) targetDate"
 					+ " FROM hashtag h INNER JOIN cashbook c"
@@ -69,11 +67,9 @@ public class HashtagDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			String driver = "org.mariadb.jdbc.Driver";
 			String dbUrl = "jdbc:mariadb://127.0.0.1:3306/cash";
 			String dbUser = "root";
 			String dbPw = "java1234";
-			Class.forName(driver);
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPw);
 			String sql = "SELECT word, COUNT(*) cnt"
 					+ " FROM hashtag h INNER JOIN cashbook c"
@@ -114,11 +110,9 @@ public class HashtagDao {
 		PreparedStatement stmt = null;
 		int row = 0;
 		try {
-			String driver = "org.mariadb.jdbc.Driver";
 			String dbUrl = "jdbc:mariadb://127.0.0.1:3306/cash";
 			String dbUser = "root";
 			String dbPw = "java1234";
-			Class.forName(driver);
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPw);
 			String sql = "INSERT INTO hashtag(cashbook_no, word, updatedate, createdate)"
 					+ " VALUES(?, ?, NOW(), NOW())";

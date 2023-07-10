@@ -20,12 +20,10 @@ public class CashbookDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null; // 입력후 생성된 키값 반환
-		try {
-			String driver = "org.mariadb.jdbc.Driver";
+		try {			
 			String dbUrl = "jdbc:mariadb://127.0.0.1:3306/cash";
 			String dbUser = "root";
-			String dbPw = "java1234";
-			Class.forName(driver);
+			String dbPw = "java1234";	
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPw);
 			String sql = "INSERT INTO"
 					+ " cashbook(member_id, category, cashbook_date, price, memo, updatedate, createdate)"
@@ -70,12 +68,10 @@ public class CashbookDao {
 					+ " WHERE c.member_id =? AND h.word = ?"
 					+ " ORDER BY c.cashbook_date DESC"
 					+ " LIMIT ?, ?";
-		try {
-			String driver = "org.mariadb.jdbc.Driver";
+		try {	
 			String dbUrl = "jdbc:mariadb://127.0.0.1:3306/cash";
 			String dbUser = "root";
 			String dbPw = "java1234";
-			Class.forName(driver);
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPw);
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, memberId);
@@ -122,12 +118,10 @@ public class CashbookDao {
 				+ " FROM cashbook c INNER JOIN hashtag h"
 				+ " ON c.cashbook_no = h.cashbook_no"
 				+ " WHERE c.member_id =? AND h.word = ?";
-		try {
-			String driver = "org.mariadb.jdbc.Driver";
+		try {	
 			String dbUrl = "jdbc:mariadb://127.0.0.1:3306/cash";
 			String dbUser = "root";
 			String dbPw = "java1234";
-			Class.forName(driver);
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPw);
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, memberId);
@@ -170,11 +164,9 @@ public class CashbookDao {
 				+ " WHERE member_id=? AND YEAR(cashbook_date)=? AND MONTH(cashbook_date)=? AND DAY(cashbook_date) = ?"
 				+ " ORDER BY cashbook_date ASC";
 		try {
-			String driver = "org.mariadb.jdbc.Driver";
 			String dbUrl = "jdbc:mariadb://127.0.0.1:3306/cash";
 			String dbUser = "root";
 			String dbPw = "java1234";
-			Class.forName(driver);
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPw);
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, memberId);
@@ -224,11 +216,9 @@ public class CashbookDao {
 					+ " WHERE member_id=? AND YEAR(cashbook_date)=? AND MONTH(cashbook_date)=?"
 					+ " ORDER BY cashbook_date ASC";
 		try {
-			String driver = "org.mariadb.jdbc.Driver";
 			String dbUrl = "jdbc:mariadb://127.0.0.1:3306/cash";
 			String dbUser = "root";
 			String dbPw = "java1234";
-			Class.forName(driver);
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPw);
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, memberId);
