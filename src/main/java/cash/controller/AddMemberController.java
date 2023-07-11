@@ -18,10 +18,10 @@ public class AddMemberController extends HttpServlet {
 	// addMember.jsp 회원가입폼
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// session 유효검사(null일때)
+		// session 유효검사
 		HttpSession session = request.getSession();
 		if(session.getAttribute("loginMember") != null) {
-			response.sendRedirect(request.getContextPath()+"/login");
+			response.sendRedirect(request.getContextPath()+"/cashbook");
 			return;
 		}
 		// jsp페이지로 포워드(디스패치)
@@ -31,10 +31,10 @@ public class AddMemberController extends HttpServlet {
 	// 회원가입 액션
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// session 유효검사(null일때)
+		// session 유효검사
 		HttpSession session = request.getSession();
 		if(session.getAttribute("loginMember") != null) {
-			response.sendRedirect(request.getContextPath()+"/login");
+			response.sendRedirect(request.getContextPath()+"/cashbook");
 			return;
 		}
 		

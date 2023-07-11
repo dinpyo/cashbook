@@ -19,7 +19,7 @@ public class MemberOneController extends HttpServlet {
 		// session 유효성 검사
 		HttpSession session = request.getSession();
 		if(session.getAttribute("loginMember") == null) {
-			response.sendRedirect(request.getContextPath()+"/cashbook");
+			response.sendRedirect(request.getContextPath()+"/login");
 			return;
 		}
 	

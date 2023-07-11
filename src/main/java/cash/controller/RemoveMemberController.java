@@ -18,7 +18,11 @@ public class RemoveMemberController extends HttpServlet {
 	// 비밀번호 입력 폼
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		HttpSession session = request.getSession();
+		if(session.getAttribute("loginMember") == null) {
+			response.sendRedirect(request.getContextPath()+"/login");
+			return;
+		}
 		request.getRequestDispatcher("/WEB-INF/view/removeMember.jsp").forward(request, response);
 	}
 
@@ -27,7 +31,7 @@ public class RemoveMemberController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("loginMember") == null) {
-			response.sendRedirect(request.getContextPath()+"/cashbook");
+			response.sendRedirect(request.getContextPath()+"/login");
 			return;
 		}
 		

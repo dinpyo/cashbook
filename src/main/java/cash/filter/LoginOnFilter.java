@@ -25,7 +25,7 @@ public class LoginOnFilter extends HttpFilter implements Filter {
 		
 		if(session.getAttribute("id") == null) {
 			HttpServletResponse rep = (HttpServletResponse)response;
-			rep.sendRedirect(req.getContextPath()+"/home");
+			rep.sendRedirect(req.getContextPath()+"/login");
 			return;
 		}
 		
