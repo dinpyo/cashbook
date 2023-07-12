@@ -16,7 +16,7 @@
 </style>
 </head>
 <body>
-	<a href="${pageContext.request.contextPath}/calendar">이전으로</a>
+	<a href="${pageContext.request.contextPath}/on/calendar">이전으로</a>
 	<h1>#${word} 해시태그 전체 리스트</h1>
 	<table>
 		<tr>
@@ -43,11 +43,11 @@
 	</table>
 	
 	<c:if test="${currentPage > 1}">
-		<a href="${pageContext.request.contextPath}/cashbookListByTag?word=${word}&currentPage=${currentPage-1}">이전</a>
+		<a href="${pageContext.request.contextPath}/on/cashbookListByTag?word=${word}&currentPage=${currentPage-1}">이전</a>
 	</c:if>
 	<span>${currentPage}</span>
 	<c:if test="${currentPage < lastPage}">
-		<a href="${pageContext.request.contextPath}/cashbookListByTag?word=${word}&currentPage=${currentPage+1}">다음</a>
+		<a href="${pageContext.request.contextPath}/on/cashbookListByTag?word=${word}&currentPage=${currentPage+1}">다음</a>
 	</c:if>
 	
 </body>

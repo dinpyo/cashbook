@@ -14,18 +14,12 @@ import cash.model.CashbookDao;
 import cash.vo.Cashbook;
 import cash.vo.Member;
 
-@WebServlet("/cashbookListByTag")
+@WebServlet("/on/cashbookListByTag")
 public class CashbookListController extends HttpServlet {
-	
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// session 구현
 		HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember") == null) {
-			response.sendRedirect(request.getContextPath()+"/login");
-			return;
-		}
 		Member member = (Member) session.getAttribute("loginMember");
 		String memberId = member.getMemberId();
 		

@@ -16,7 +16,7 @@
 </style>
 </head>
 <body>
-	<a href="${pageContext.request.contextPath}/calendar">이전으로</a>
+	<a href="${pageContext.request.contextPath}/on/calendar">이전으로</a>
 	<h1>${targetYear}년 ${targetMonth+1}월 #${word} 해시태그 리스트</h1>
 	<table>
 		<tr>
@@ -34,7 +34,7 @@
 			<td>${m.cashbookNo}</td>
 			<td>${m.category}</td>
 			<td>
-				<a href="${pageContext.request.contextPath}/cashbookOne?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${m.targetDate}">
+				<a href="${pageContext.request.contextPath}/on/cashbookOne?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${m.targetDate}">
 					${m.cashbookDate}
 				</a>
 			</td>
@@ -44,10 +44,6 @@
 			<td>${m.createdate}</td>
 		</tr>
 		</c:forEach>
-	
-	
-	
-	
 	</table>
 </body>
 </html>

@@ -25,7 +25,7 @@
 				<td>${member.createdate}</td>
 			</tr>
 		</table>
-		<a href="${pageContext.request.contextPath}/modifyMember">회원정보수정</a>
-		<a href="${pageContext.request.contextPath}/removeMember">회원탈퇴</a>
+		<a href="${pageContext.request.contextPath}/on/modifyMember">회원정보수정</a>
+		<a href="${pageContext.request.contextPath}/on/removeMember">회원탈퇴</a>
 </body>
 </html>

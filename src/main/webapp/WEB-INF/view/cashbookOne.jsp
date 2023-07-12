@@ -16,7 +16,7 @@
 </style>
 </head>
 <body>
-	<a href="${pageContext.request.contextPath}/calendar">이전으로</a>
+	<a href="${pageContext.request.contextPath}/on/calendar">이전으로</a>
 	<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 	<h1>${targetYear}년 ${targetMonth+1}월 ${targetDate}일 수입/지출 내역</h1>
 	<table>
@@ -41,7 +41,7 @@
 				</tr>
 			</c:forEach>
 	</table>
-	<a href="${pageContext.request.contextPath}/addCashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${targetDate}">
+	<a href="${pageContext.request.contextPath}/on/addCashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${targetDate}">
 		추가
 	</a>
 </body>

@@ -11,17 +11,11 @@ import javax.servlet.http.HttpSession;
 import cash.model.MemberDao;
 import cash.vo.Member;
 
-@WebServlet("/login")
+@WebServlet("/off/login")
 public class LoginController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// session 인증 검사 코드
-		HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember") != null) {
-			response.sendRedirect(request.getContextPath()+"/cashbook");
-			return;
-		}
 		request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
 	}
 	
@@ -36,16 +30,16 @@ public class LoginController extends HttpServlet {
 		Member loginMember = memberDao.selectMemberById(member);
 			
 		if(loginMember == null) { // null 로그인실패
-			System.out.println("로그인 실패");
-			response.sendRedirect(request.getContextPath()+"/login");
-			return;
+		System.out.println("로그인 실패");
+		response.sendRedirect(request.getContextPath()+"/off/login");
+		return;
 		}
 		
 		// 로그인 성공시 : session 사용
 		HttpSession session = request.getSession();
 		System.out.println("로그인 성공");
 		session.setAttribute("loginMember", loginMember);
-		response.sendRedirect(request.getContextPath()+"/cashbook");
+		response.sendRedirect(request.getContextPath()+"/on/cashbook");
 	}
 
 }

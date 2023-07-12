@@ -7,7 +7,7 @@
 </head>
 <body>
 	<h1>회원정보수정</h1>
-	<form method="post" action="${pageContext.request.contextPath}/modifyMember">
+	<form method="post" action="${pageContext.request.contextPath}/on/modifyMember">
 		<table border="1">
 			<tr>
 				<td>현재 비밀번호 입력</td>

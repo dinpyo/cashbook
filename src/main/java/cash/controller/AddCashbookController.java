@@ -18,19 +18,12 @@ import cash.vo.Member;
 import cash.vo.Cashbook;
 
 
-@WebServlet("/addCashbook")
+@WebServlet("/on/addCashbook")
 public class AddCashbookController extends HttpServlet {
 	// 입력 폼
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// session 검사
-		HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember") == null) {
-			response.sendRedirect(request.getContextPath()+"/login");
-			return;
-		}
-	
 		// request 매개값
 		int targetYear = Integer.parseInt(request.getParameter("targetYear"));
 		int targetMonth = Integer.parseInt(request.getParameter("targetMonth"));
@@ -39,9 +32,7 @@ public class AddCashbookController extends HttpServlet {
 		request.setAttribute("targetYear", targetYear);
 		request.setAttribute("targetMonth", targetMonth);
 		request.setAttribute("targetDate", targetDate);
-	
-		// 나머지 데이터는 입력폼에서 사용자가 입력
-			
+				
 		request.getRequestDispatcher("/WEB-INF/view/addCashbook.jsp").forward(request, response);
 	}
 	
@@ -52,10 +43,6 @@ public class AddCashbookController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		// session 검사
 		HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember") == null) {
-			response.sendRedirect(request.getContextPath()+"/login");
-			return;
-		}
 		Member member = (Member) session.getAttribute("loginMember");
 		String memberId = member.getMemberId();
 		
@@ -82,7 +69,7 @@ public class AddCashbookController extends HttpServlet {
 		// 입력 실패시
 		if(cashbookNo == 0) {
 			System.out.println("입력실패");
-			response.sendRedirect(request.getContextPath()+"/addCashbook?targetYear="+targetYear+"&targetMonth="+targetMonth+"&targetDate="+targetDate);
+			response.sendRedirect(request.getContextPath()+"/on/addCashbook?targetYear="+targetYear+"&targetMonth="+targetMonth+"&targetDate="+targetDate);
 			return;
 		}
 	
@@ -105,14 +92,14 @@ public class AddCashbookController extends HttpServlet {
             }
 		}
 		
-		 for(String s : set) {
-     		Hashtag hashtag = new Hashtag();
-				hashtag.setCashbookNo(cashbookNo);
-				hashtag.setWord(s);
-				hashtagDao.insertHashtag(hashtag);
-     }
+		for(String s : set) {
+			Hashtag hashtag = new Hashtag();
+			hashtag.setCashbookNo(cashbookNo);
+			hashtag.setWord(s);
+			hashtagDao.insertHashtag(hashtag);
+		}
 	
 		// redirect -> cashbookOneController -> forward -> cashbookOne.jsp
-		response.sendRedirect(request.getContextPath()+"/calendar");
+		response.sendRedirect(request.getContextPath()+"/on/calendar");
 	}
 }

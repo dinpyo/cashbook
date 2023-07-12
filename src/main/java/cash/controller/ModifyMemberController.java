@@ -12,31 +12,19 @@ import cash.model.MemberDao;
 import cash.vo.Member;
 
 
-@WebServlet("/modifyMember")
+@WebServlet("/on/modifyMember")
 public class ModifyMemberController extends HttpServlet {
 	
 	// 회원정보 수정 폼
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// session 검사
-		HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember") == null) {
-			response.sendRedirect(request.getContextPath()+"/login");
-			return;
-		}
 		request.getRequestDispatcher("/WEB-INF/view/modifyMember.jsp").forward(request, response);
 	}
 	
 	// 회원정보 수정
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// session 검사
 		HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember") == null) {
-			response.sendRedirect(request.getContextPath()+"/login");
-			return;
-		}
-		
 		Member loginMember = (Member)(session.getAttribute("loginMember"));
 		String memberPw = request.getParameter("memberPw");
 		String newPw1 = request.getParameter("newPw1");
@@ -46,10 +34,10 @@ public class ModifyMemberController extends HttpServlet {
 		int row = memberDao.updateMember(loginMember.getMemberId(), memberPw, newPw1, newPw2);
 		if(row==0) { // 회원정보 수정 실패시
 			System.out.println("회원정보 수정 실패");
-			response.sendRedirect(request.getContextPath()+"/modifyMember");
+			response.sendRedirect(request.getContextPath()+"/on/modifyMember");
 		} else if(row==1) { // 회원정보 수정 성공시
 			System.out.println("회원정보 수정 성공");
-			response.sendRedirect(request.getContextPath()+"/login");
+			response.sendRedirect(request.getContextPath()+"/on/memberOne");
 		}
 	}
 

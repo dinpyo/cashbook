@@ -10,20 +10,13 @@ import javax.servlet.http.HttpSession;
 
 import cash.service.CounterService;
 
-@WebServlet("/cashbook")
+@WebServlet("/on/cashbook")
 public class CashbookController extends HttpServlet {
 	private CounterService counterService = null;
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// session 인증 검사 코드
-		HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember") == null) {
-			response.sendRedirect(request.getContextPath()+"/login");
-			return;
-		}
-		
-		// 접속자 수 
+		// 접속자 수 카운터
 		this.counterService = new CounterService();
 		
 		int counter = counterService.getCounter();

@@ -22,9 +22,9 @@ public class LoginOffFilter extends HttpFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest)request;
 		HttpSession session = req.getSession();
 		
-		if(session.getAttribute("id") != null) {
+		if(session.getAttribute("loginMember") != null) { 
 			HttpServletResponse rep = (HttpServletResponse)response;
-			rep.sendRedirect(req.getContextPath()+"/cashbook");
+			rep.sendRedirect(req.getContextPath()+"/on/cashbook");
 			return;
 		}
 		

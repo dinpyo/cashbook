@@ -19,16 +19,11 @@ import cash.vo.Cashbook;
 import cash.vo.Member;
 
 
-@WebServlet("/calendar")
+@WebServlet("/on/calendar")
 public class CalendarController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// session 인증 검사
 		HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember") == null) {
-			response.sendRedirect(request.getContextPath()+"/login");
-			return;
-		}
 		Member member = (Member) session.getAttribute("loginMember");
 		String memberId = member.getMemberId();	
 		

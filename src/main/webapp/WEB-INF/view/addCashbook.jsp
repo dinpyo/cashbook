@@ -17,7 +17,7 @@
 </head>
 <body>
 	<h1>${targetYear}년 ${targetMonth+1}월 ${targetDate}일 수입/지출 추가</h1>
-	<form method="post" action="${pageContext.request.contextPath}/addCashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${targetDate}">	
+	<form method="post" action="${pageContext.request.contextPath}/on/addCashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${targetDate}">	
 		<table>
 			<tr>
 				<th>수입/지출</th>

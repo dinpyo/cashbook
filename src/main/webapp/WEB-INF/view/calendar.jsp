@@ -34,14 +34,14 @@
 	<!-- 자바코드(제어문) : JSTL 사용 -->
 	
 	<h1>${targetYear}년 ${targetMonth+1}월</h1>
-	<a href="${pageContext.request.contextPath}/calendar?targetYear=${targetYear}&targetMonth=${targetMonth-1}">이전</a>
-	<a href="${pageContext.request.contextPath}/calendar?targetYear=${targetYear}&targetMonth=${targetMonth+1}">다음</a>
+	<a href="${pageContext.request.contextPath}/on/calendar?targetYear=${targetYear}&targetMonth=${targetMonth-1}">이전</a>
+	<a href="${pageContext.request.contextPath}/on/calendar?targetYear=${targetYear}&targetMonth=${targetMonth+1}">다음</a>
 	
 	<div>
 		<h2>해시태그 전체보기</h2>
 		<div>
 			<c:forEach var="m" items="${htList}">
-				<a style="color:#9900CC; text-decoration:none;" href="${pageContext.request.contextPath}/cashbookListByTag?word=${m.word}">
+				<a style="color:#9900CC; text-decoration:none;" href="${pageContext.request.contextPath}/on/cashbookListByTag?word=${m.word}">
 					[${m.word}]  
 				</a>
 			</c:forEach>
@@ -52,7 +52,7 @@
 		<h2>이달의 해시태그</h2>
 		<div>
 			<c:forEach var="m" items="${htList}">
-				<a style="color:#9900CC; text-decoration:none;" href="${pageContext.request.contextPath}/hashtagOne?targetYear=${targetYear}&targetMonth=${targetMonth}&word=${m.word}">
+				<a style="color:#9900CC; text-decoration:none;" href="${pageContext.request.contextPath}/on/hashtagOne?targetYear=${targetYear}&targetMonth=${targetMonth}&word=${m.word}">
 					[${m.word}(${m.cnt})]  
 				</a>
 			</c:forEach>
@@ -84,7 +84,7 @@
 					<c:if test="${d > 0 && d <= lastDate}">
 						<td>
 							<div>  	 
-								<a style="color:#000000; text-decoration:none;" href="${pageContext.request.contextPath}/cashbookOne?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${d}">
+								<a style="color:#000000; text-decoration:none;" href="${pageContext.request.contextPath}/on/cashbookOne?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${d}">
 								
 									<c:if test="${i%7 == 0}">
 										<span style="color:red;">${d}</span>
