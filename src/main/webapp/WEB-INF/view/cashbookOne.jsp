@@ -41,6 +41,7 @@
 				</tr>
 			</c:forEach>
 	</table>
+	<br>
 	<a href="${pageContext.request.contextPath}/on/addCashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${targetDate}">
 		추가
 	</a>

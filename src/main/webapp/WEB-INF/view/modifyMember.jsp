@@ -6,6 +6,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<a href="${pageContext.request.contextPath}/on/memberOne">이전으로</a>
+	<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 	<h1>회원정보수정</h1>
 	<form method="post" action="${pageContext.request.contextPath}/on/modifyMember">
 		<table border="1">
@@ -22,6 +24,7 @@
 				<td><input type="password" name="newPw2"></td>
 			</tr>
 		</table>
+		<br>
 		<button type="submit">수정</button>
 	</form>
 </body>

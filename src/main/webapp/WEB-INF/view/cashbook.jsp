@@ -16,6 +16,7 @@
 	<div>
 		누적 접속자 : ${totalCounter} <!-- request.getAttribute("totalCounter"); -->
 	</div>
+	<br>
 	<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 	<a href="${pageContext.request.contextPath}/on/memberOne">회원정보</a>
 	<a href="${pageContext.request.contextPath}/on/calendar">캘린더</a>

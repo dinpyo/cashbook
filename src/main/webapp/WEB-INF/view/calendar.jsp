@@ -33,6 +33,9 @@
 	
 	<!-- 자바코드(제어문) : JSTL 사용 -->
 	
+	<a href="${pageContext.request.contextPath}/on/cashbook">이전으로</a>
+	<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+	
 	<h1>${targetYear}년 ${targetMonth+1}월</h1>
 	<a href="${pageContext.request.contextPath}/on/calendar?targetYear=${targetYear}&targetMonth=${targetMonth-1}">이전</a>
 	<a href="${pageContext.request.contextPath}/on/calendar?targetYear=${targetYear}&targetMonth=${targetMonth+1}">다음</a>
@@ -42,7 +45,7 @@
 		<div>
 			<c:forEach var="m" items="${htList}">
 				<a style="color:#9900CC; text-decoration:none;" href="${pageContext.request.contextPath}/on/cashbookListByTag?word=${m.word}">
-					[${m.word}]  
+					&nbsp;${m.word}  
 				</a>
 			</c:forEach>
 		</div>
@@ -53,7 +56,7 @@
 		<div>
 			<c:forEach var="m" items="${htList}">
 				<a style="color:#9900CC; text-decoration:none;" href="${pageContext.request.contextPath}/on/hashtagOne?targetYear=${targetYear}&targetMonth=${targetMonth}&word=${m.word}">
-					[${m.word}(${m.cnt})]  
+					&nbsp;${m.word}(${m.cnt})
 				</a>
 			</c:forEach>
 		</div>

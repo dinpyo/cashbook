@@ -6,6 +6,8 @@
 <title>memberOne.jsp</title>
 </head>
 <body>
+	<a href="${pageContext.request.contextPath}/on/cashbook">이전으로</a>
+	<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 	<h1>회원상세정보</h1>
 		<table border="1">
 			<tr>
@@ -25,6 +27,7 @@
 				<td>${member.createdate}</td>
 			</tr>
 		</table>
+		<br>
 		<a href="${pageContext.request.contextPath}/on/modifyMember">회원정보수정</a>
 		<a href="${pageContext.request.contextPath}/on/removeMember">회원탈퇴</a>
 </body>

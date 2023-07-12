@@ -16,6 +16,7 @@
 </style>
 </head>
 <body>
+	<a href="${pageContext.request.contextPath}/on/cashbookOne?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${targetDate}">이전으로</a>
 	<h1>${targetYear}년 ${targetMonth+1}월 ${targetDate}일 수입/지출 추가</h1>
 	<form method="post" action="${pageContext.request.contextPath}/on/addCashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${targetDate}">	
 		<table>
@@ -45,6 +46,7 @@
 				</td>
 			</tr>
 		</table>
+		<br>
 		<button type="submit">추가</button>
 	</form>
 </body>

@@ -6,9 +6,8 @@
 <title>addMember.jsp</title>
 </head>
 <body>
-	<h1>회원가입</h1>
 	<a href="${pageContext.request.contextPath}/off/login">이전으로</a>
-	<br>
+	<h1>회원가입</h1>
 	<form method="post" action="${pageContext.request.contextPath}/off/addMember">
 		<table border="1">
 			<tr>
@@ -20,6 +19,7 @@
 				<td><input type="password" name="memberPw" required="required"></td>
 			</tr>
 		</table>
+		<br>
 		<button type="submit">회원가입</button>
 	</form>
 </body>

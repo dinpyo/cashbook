@@ -47,6 +47,7 @@
 				</td>
 			</tr>
 		</table>
+		<br>
 		<button id="loginBtn" type="button">로그인</button>
 		<a href="${pageContext.request.contextPath}/off/addMember">회원가입</a>
 	</form>
