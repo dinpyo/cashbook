@@ -146,11 +146,6 @@ public class CashbookDao {
 		return row;
 	}
 	
-	
-	
-
-
-	
 	// 수입과 지출 상세보기
 	public List<Cashbook> selectCashbookOne(String memberId, int targetYear, int targetMonth, int targetDate){
 		List<Cashbook> list = new ArrayList<Cashbook>();
@@ -200,9 +195,7 @@ public class CashbookDao {
 		
 		return list;
 	}
-
 	
-		
 	// 달력에 수입 지출 표시
 	public List<Cashbook> selectCashbookListByMonth(String memberId, int targetYear, int targetMonth) {
 		
@@ -245,7 +238,6 @@ public class CashbookDao {
 				e2.printStackTrace();
 			}
 		}
-		
 		return list;
 	}
 }

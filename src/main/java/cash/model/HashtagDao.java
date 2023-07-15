@@ -132,9 +132,5 @@ public class HashtagDao {
 			}
 		}
 		return row;
-	}
-	
-	
-	
-	
+	}	
 }

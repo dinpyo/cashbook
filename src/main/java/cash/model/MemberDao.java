@@ -9,17 +9,12 @@ import cash.vo.Member;
 
 public class MemberDao {
 	// 회원정보 수정
-	public int updateMember(String memberId, String memberPw, String newPw1, String newPw2) {
+	public int updateMember(Connection conn,String memberId, String memberPw, String newPw1, String newPw2) {
 		int row = 0;
-		
-		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
-		// 조회
-		String selectSql = "SELECT COUNT(*) FROM member WHERE member_id=? AND member_pw= PASSWORD(?)";
 		try {
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			String selectSql = "SELECT COUNT(*) FROM member WHERE member_id=? AND member_pw= PASSWORD(?)";
 			stmt = conn.prepareStatement(selectSql);
 			stmt.setString(1, memberId);
 			stmt.setString(2, memberPw);
@@ -31,17 +26,15 @@ public class MemberDao {
 			e1.printStackTrace();
 		} finally {
 			try {
-				stmt.close();
-				conn.close();
+				stmt.close();		
 			} catch(Exception e2) {
 				e2.printStackTrace();
 			}
 		}
 		// 조회가 되는 행이 있으면
 		if(row>0 && newPw1.equals(newPw2)) {	
-			String updateSql = "UPDATE member SET member_pw = PASSWORD(?), updatedate = NOW() WHERE member_id = ?";
 			try {
-				conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+				String updateSql = "UPDATE member SET member_pw = PASSWORD(?), updatedate = NOW() WHERE member_id = ?";
 				stmt = conn.prepareStatement(updateSql);
 				stmt.setString(1, newPw1);
 				stmt.setString(2, memberId);
@@ -52,7 +45,6 @@ public class MemberDao {
 				try {
 					rs.close();
 					stmt.close();
-					conn.close();
 				} catch(Exception e2) {
 					e2.printStackTrace();
 				}
@@ -68,8 +60,8 @@ public class MemberDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		
-		String sql = "DELETE FROM member WHERE member_id =? AND member_pw = PASSWORD(?)";
 		try {
+			String sql = "DELETE FROM member WHERE member_id =? AND member_pw = PASSWORD(?)";
 			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, memberId);
@@ -88,8 +80,6 @@ public class MemberDao {
 		return row;
 	}
 	
-	
-	
 	// 회원 상세정보
 	public Member selectMemberOne(String memberId) {
 		Member returnMemberOne = null;
@@ -98,8 +88,8 @@ public class MemberDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT member_id memberId, member_pw memberPw, updatedate, createdate FROM member WHERE member_id = ?";
 		try {
+			String sql = "SELECT member_id memberId, member_pw memberPw, updatedate, createdate FROM member WHERE member_id = ?";
 			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, memberId);
@@ -132,8 +122,8 @@ public class MemberDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 	
-		String sql = "INSERT INTO member VALUES(?, PASSWORD(?), NOW(), NOW())";
 		try {
+			String sql = "INSERT INTO member VALUES(?, PASSWORD(?), NOW(), NOW())";
 			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, member.getMemberId());
@@ -160,8 +150,8 @@ public class MemberDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT member_id memberId FROM member WHERE member_id=? AND member_pw = PASSWORD(?)";
 		try {
+			String sql = "SELECT member_id memberId FROM member WHERE member_id=? AND member_pw = PASSWORD(?)";
 			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, paramMember.getMemberId());
@@ -185,11 +175,4 @@ public class MemberDao {
 		
 		return returnMember;
 	}
-	
-	
-	
-	
-	
-	
-	
 }

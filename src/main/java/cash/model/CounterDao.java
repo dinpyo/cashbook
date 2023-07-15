@@ -44,7 +44,8 @@ public class CounterDao {
 				e2.printStackTrace();
 			}
 		}
-	}	
+	}
+	
 	// 오늘날짜 카운터
 	public int selectCounterCurdate(Connection conn) throws Exception {
 		PreparedStatement stmt = null;
@@ -72,6 +73,7 @@ public class CounterDao {
 		}
 		return counter;
 	}
+	
 	// 누적 카운터
 	public int selectCounterAll(Connection conn) throws Exception {
 		PreparedStatement stmt = null;
