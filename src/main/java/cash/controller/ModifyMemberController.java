@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cash.model.MemberDao;
+import cash.service.MemberService;
 import cash.vo.Member;
 
 
@@ -30,8 +30,10 @@ public class ModifyMemberController extends HttpServlet {
 		String newPw1 = request.getParameter("newPw1");
 		String newPw2 = request.getParameter("newPw2");
 		
-		MemberDao memberDao = new MemberDao();
-		int row = memberDao.updateMember(loginMember.getMemberId(), memberPw, newPw1, newPw2);
+		// Dao 호출
+		MemberService memberService = new MemberService();
+		int row = memberService.updateMember(loginMember.getMemberId(), memberPw, newPw1, newPw2);
+		
 		if(row==0) { // 회원정보 수정 실패시
 			System.out.println("회원정보 수정 실패");
 			response.sendRedirect(request.getContextPath()+"/on/modifyMember");

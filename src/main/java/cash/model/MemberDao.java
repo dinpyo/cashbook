@@ -8,50 +8,6 @@ import java.sql.ResultSet;
 import cash.vo.Member;
 
 public class MemberDao {
-	// 회원정보 수정
-	public int updateMember(Connection conn,String memberId, String memberPw, String newPw1, String newPw2) {
-		int row = 0;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		try {
-			String selectSql = "SELECT COUNT(*) FROM member WHERE member_id=? AND member_pw= PASSWORD(?)";
-			stmt = conn.prepareStatement(selectSql);
-			stmt.setString(1, memberId);
-			stmt.setString(2, memberPw);
-			rs = stmt.executeQuery();
-			if(rs.next()) {
-				row = rs.getInt(1);
-			}
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		} finally {
-			try {
-				stmt.close();		
-			} catch(Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-		// 조회가 되는 행이 있으면
-		if(row>0 && newPw1.equals(newPw2)) {	
-			try {
-				String updateSql = "UPDATE member SET member_pw = PASSWORD(?), updatedate = NOW() WHERE member_id = ?";
-				stmt = conn.prepareStatement(updateSql);
-				stmt.setString(1, newPw1);
-				stmt.setString(2, memberId);
-				row = stmt.executeUpdate();
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			} finally {
-				try {
-					rs.close();
-					stmt.close();
-				} catch(Exception e2) {
-					e2.printStackTrace();
-				}
-			}
-		}
-		return row;
-	}
 	
 	// 회원 탈퇴
 	public int deleteMember(String memberId, String memberPw) {
@@ -174,5 +130,50 @@ public class MemberDao {
 		}
 		
 		return returnMember;
+	}
+	
+	// 회원정보 수정
+	public int updateMember(Connection conn, String memberId, String memberPw, String newPw1, String newPw2) {
+		int row = 0;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			String selectSql = "SELECT COUNT(*) FROM member WHERE member_id=? AND member_pw= PASSWORD(?)";
+			stmt = conn.prepareStatement(selectSql);
+			stmt.setString(1, memberId);
+			stmt.setString(2, memberPw);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				row = rs.getInt(1);
+			}
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();		
+			} catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		// 조회가 되는 행이 있으면
+		if(row>0 && newPw1.equals(newPw2)) {	
+			try {
+				String updateSql = "UPDATE member SET member_pw = PASSWORD(?), updatedate = NOW() WHERE member_id = ?";
+				stmt = conn.prepareStatement(updateSql);
+				stmt.setString(1, newPw1);
+				stmt.setString(2, memberId);
+				row = stmt.executeUpdate();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			} finally {
+				try {
+					stmt.close();
+				} catch(Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+		}
+		return row;
 	}
 }
