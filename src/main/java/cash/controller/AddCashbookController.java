@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import cash.model.HashtagDao;
+import cash.service.HashtagService;
 import cash.model.CashbookDao;
 import cash.vo.Hashtag;
 import cash.vo.Member;
@@ -76,7 +77,8 @@ public class AddCashbookController extends HttpServlet {
 		// 입력성공시 -> 해시태그가 있다면 -> 해시태그 추출 -> 해시태그 입력(반복)
 		// 해시태그 추출 알고리즘
 		//  # #구디 #구디 #자바
-		HashtagDao hashtagDao = new HashtagDao();
+		HashtagService hashtagService = new HashtagService();
+		
 		String memo1 = cashbook.getMemo();
 		String memo2 = memo1.replace("#", " #"); // "#구디#아카데미" -> " #구디 #아카데미"
 		
@@ -96,7 +98,7 @@ public class AddCashbookController extends HttpServlet {
 			Hashtag hashtag = new Hashtag();
 			hashtag.setCashbookNo(cashbookNo);
 			hashtag.setWord(s);
-			hashtagDao.insertHashtag(hashtag);
+			hashtagService.insertHashtag(hashtag);
 		}
 	
 		// redirect -> cashbookOneController -> forward -> cashbookOne.jsp

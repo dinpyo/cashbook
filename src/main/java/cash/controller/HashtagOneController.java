@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import cash.model.HashtagDao;
+import cash.service.HashtagService;
 import cash.vo.Member;
 
 
@@ -29,7 +30,7 @@ public class HashtagOneController extends HttpServlet {
 		String word = request.getParameter("word");
 		
 		// 모델을 호출(월별 해시태그들 리스트)
-		List<Map<String, Object>> list = new HashtagDao().selectWordByMonthList(memberId, targetYear, targetMonth+1, word);
+		List<Map<String, Object>> list = new HashtagService().selectWordByMonthList(memberId, targetYear, targetMonth+1, word);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("word", word);

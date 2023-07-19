@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import cash.model.CashbookDao;
 import cash.model.HashtagDao;
+import cash.service.HashtagService;
 import cash.vo.Cashbook;
 import cash.vo.Member;
 
@@ -64,7 +65,7 @@ public class CalendarController extends HttpServlet {
 		List<Cashbook> list = new CashbookDao().selectCashbookListByMonth(memberId, targetYear, targetMonth+1);
 		
 		// 모델을 호출(해시태그들의 개수)
-		List<Map<String, Object>> htList = new HashtagDao().selectWordCountByMonth(memberId, targetYear, targetMonth+1);
+		List<Map<String, Object>> htList = new HashtagService().selectWordCountByMonth(memberId, targetYear, targetMonth+1);
 			
 		// 뷰에 값넘기기(request 속성)
 		request.setAttribute("targetYear", targetYear);
