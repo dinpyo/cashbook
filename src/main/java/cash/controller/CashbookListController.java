@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cash.model.CashbookDao;
+import cash.service.CashbookService;
 import cash.vo.Cashbook;
 import cash.vo.Member;
 
@@ -37,10 +37,10 @@ public class CashbookListController extends HttpServlet {
 		// 페이지당 시작 행번호
 		int beginRow = (currentPage-1)*rowPerPage;
 		
-		CashbookDao cashbookDao = new CashbookDao();
+		CashbookService cashbookService = new CashbookService();
 		
 		// 총 행의 개수
-		int totalRow = cashbookDao.selectCashbookListByTagCnt(memberId, word);
+		int totalRow = cashbookService.selectCashbookListByTagCnt(memberId, word);
 		
 		// 마지막 행의 페이지
 		int lastPage = totalRow/rowPerPage;
@@ -48,7 +48,7 @@ public class CashbookListController extends HttpServlet {
 			lastPage++;
 		}
 		
-		List<Cashbook> list = cashbookDao.selectCashbookListByTag(memberId, word, beginRow, rowPerPage);
+		List<Cashbook> list = cashbookService.selectCashbookListByTag(memberId, word, beginRow, rowPerPage);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("word", word);

@@ -1,7 +1,6 @@
 package cash.controller;
 
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cash.model.CashbookDao;
+import cash.service.CashbookService;
 import cash.vo.Cashbook;
 import cash.vo.Member;
 
@@ -33,7 +32,7 @@ public class CashbookOneController extends HttpServlet {
 		
 		
 		// 모델을 호출
-		List<Cashbook> list = new CashbookDao().selectCashbookOne(memberId, targetYear, targetMonth+1, targetDate);
+		List<Cashbook> list = new CashbookService().selectCashbookOne(memberId, targetYear, targetMonth+1, targetDate);
 		
 		request.setAttribute("targetYear", targetYear);
 		request.setAttribute("targetMonth", targetMonth);

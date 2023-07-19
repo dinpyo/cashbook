@@ -11,9 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cash.model.HashtagDao;
+import cash.service.CashbookService;
 import cash.service.HashtagService;
-import cash.model.CashbookDao;
 import cash.vo.Hashtag;
 import cash.vo.Member;
 import cash.vo.Cashbook;
@@ -21,8 +20,8 @@ import cash.vo.Cashbook;
 
 @WebServlet("/on/addCashbook")
 public class AddCashbookController extends HttpServlet {
-	// 입력 폼
 	
+	// 입력 폼
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// request 매개값
@@ -36,7 +35,6 @@ public class AddCashbookController extends HttpServlet {
 				
 		request.getRequestDispatcher("/WEB-INF/view/addCashbook.jsp").forward(request, response);
 	}
-	
 	 
 	// 입력 액션
 	@Override
@@ -64,8 +62,8 @@ public class AddCashbookController extends HttpServlet {
 		cashbook.setPrice(price);
 		cashbook.setMemo(memo);
 		
-		CashbookDao cashbookDao = new CashbookDao();
-		int cashbookNo = cashbookDao.insertCashbook(cashbook); // 키값 반환
+		CashbookService cashbookService = new CashbookService();
+		int cashbookNo = cashbookService.insertCashbook(cashbook); // 키값 반환
 		
 		// 입력 실패시
 		if(cashbookNo == 0) {
