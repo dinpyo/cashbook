@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cash.model.MemberDao;
+import cash.service.MemberService;
 import cash.vo.Member;
 
 @WebServlet("/on/removeMember")
@@ -28,8 +28,8 @@ public class RemoveMemberController extends HttpServlet {
 		Member loginMember = (Member)(session.getAttribute("loginMember"));
 		String memberPw = request.getParameter("memberPw");
 		
-		MemberDao memberDao = new MemberDao();
-		int row = memberDao.deleteMember(loginMember.getMemberId(), memberPw);
+		MemberService memberService = new MemberService();
+		int row = memberService.deleteMember(loginMember.getMemberId(), memberPw);
 		if(row==0) { // 회원탈퇴 실패시
 			System.out.println("회원탈퇴 실패");
 			response.sendRedirect(request.getContextPath()+"/on/removeMember");

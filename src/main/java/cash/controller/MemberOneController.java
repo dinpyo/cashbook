@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cash.model.MemberDao;
+import cash.service.MemberService;
 import cash.vo.Member;
 
 @WebServlet("/on/memberOne")
@@ -21,8 +21,9 @@ public class MemberOneController extends HttpServlet {
 		Member loginMember = (Member)(session.getAttribute("loginMember"));
 		
 		// 모델 값 구하기(dao 메서드를 호출)
-		MemberDao memberDao = new MemberDao();
-		Member member = memberDao.selectMemberOne(loginMember.getMemberId());
+		
+		MemberService memberService = new MemberService();
+		Member member = memberService.selectMemberOne(loginMember.getMemberId());
 		
 		// member 출력하는(포워딩대상) memberOne.jsp에도 공유 되어야 된다.
 		// request가 공유되니까 request안에 넣어서 공유
