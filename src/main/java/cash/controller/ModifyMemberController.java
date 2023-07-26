@@ -39,7 +39,7 @@ public class ModifyMemberController extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+"/on/modifyMember");
 		} else if(row==1) { // 회원정보 수정 성공시
 			System.out.println("회원정보 수정 성공");
-			response.sendRedirect(request.getContextPath()+"/on/memberOne");
+			response.sendRedirect(request.getContextPath()+"/logout");
 		}
 	}
 
