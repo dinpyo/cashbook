@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	<title>login.jsp</title>
+	<title>로그인</title>
 	<!-- Custom fonts for this template-->
     <link href="${pageContext.request.contextPath}/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 	<link
@@ -41,6 +41,7 @@
 </head>
 <body class="bg-gradient-primary">
 	<div class="container">
+	<br><br><br><br><br>
         <!-- Outer Row -->
 		<div class="row justify-content-center">
             <div class="col-xl-10 col-lg-12 col-md-9">
@@ -58,8 +59,8 @@
                                         <div class="form-group">       
 											<input type="text" class="form-control form-control-user" name="memberId" id="memberId" placeholder="아이디">
 											<span style="color: red;" id="memberIdMsg"></span>
-                                                
                                         </div>
+                                                
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" name="memberPw" id="memberPw" placeholder="비밀번호">
                                             <span style="color: red;" id="memberPwMsg"></span>    
