@@ -87,15 +87,11 @@
                     </div>
                 </div>
             </li>
-       
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- 뒤로가기 버튼 
+            
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-            -->
+            
             <li class="nav-item">
             	<br><br><br><br><br><br><br><br><br><br>
 				<a class="nav-link" href="${pageContext.request.contextPath}/logout">

@@ -55,7 +55,7 @@
                                     </form>
                                     
                                     <div class="text-center">
-                                        <a class="small" href="${pageContext.request.contextPath}/on/cashbook">취소하실건가요? 이전페이지로!</a>    
+                                        <a class="small" href="${pageContext.request.contextPath}/on/cashbook">취소하시겠습니까? 이전페이지로!</a>    
                                     </div>
                                 </div>
                             </div>
