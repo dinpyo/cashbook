@@ -52,15 +52,7 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>캘린더</span></a>
             </li>
-			<!-- 
-	            <li class="nav-item">
-	                <a class="nav-link" href="charts.html">
-	                    <i class="fas fa-fw fa-chart-area"></i>
-	                    <span>Charts</span></a>
-	            </li>
-           	-->
-	            
-  	
+			
             <hr class="sidebar-divider">
 
             <!-- Heading -->
@@ -73,7 +65,7 @@
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>회원</span>
+                    <span>개인정보수정</span>
                 </a>
                 <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
                     data-parent="#accordionSidebar">
@@ -114,11 +106,10 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- 상단바 접속자 현황 -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <!-- 상단바 -->
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-							계정 상세 보기
+							회원 정보
                         </div>
                     </form>
 
@@ -152,7 +143,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">님</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle"
                                     src="${pageContext.request.contextPath}/assets/img/undraw_profile.svg">
                             </a>
@@ -175,34 +166,40 @@
                 </nav>
                 <!-- 상단바 끝 -->
 
-                <!-- Begin Page Content -->
+				<!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">회원상세정보</h1>
-			
-						<table border="1">
-							<tr>
-								<td>memberId</td>
-								<td>${member.memberId}</td>
-							</tr>
-							<tr>
-								<td>memberPw</td>
-								<td>****</td>
-							</tr>
-							<tr>
-								<td>updatedate</td>
-								<td>${member.updatedate}</td>
-							</tr>
-							<tr>
-								<td>createdate</td>
-								<td>${member.createdate}</td>
-							</tr>
-						</table>
-						<br>
-
+                
+                <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">회원 상세정보</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>아이디</th>
+                                            <th>비밀번호</th>
+                                            <th>수정일</th>
+                                            <th>생성일</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td>${member.memberId}</td>
+                                            <td>****</td>
+                                            <td>${member.updatedate}</td>
+                                            <td>${member.createdate}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.container-fluid -->
-
+                <!-- /.container-fluid -->  
             </div>
             <!-- End of Main Content -->
 
