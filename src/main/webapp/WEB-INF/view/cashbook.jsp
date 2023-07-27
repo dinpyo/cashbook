@@ -180,13 +180,22 @@
 
                 </nav>
                 <!-- 상단바 끝 -->
-
+				
+				<h1><span>&nbsp;<---- 메인메뉴에서 캘린더를 눌러주세요!!</span></h1>
+				
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+					<br><br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">제 목</h1>
-
+                    <h1 class="h3 mb-4 text-gray-800">캘린더API를 이용한 가계부 프로젝트</h1>
+					<p>기간 : 2023.06.30 ~ 2023.07.20</p>					
+					<ul>
+						<li>Eclipse(2022-12(4.23.0)), JDK(17.0.7)</li>
+						<li>HTML5, CSS3, bootstrap5, JSTL(1.2)</li>
+						<li>Apache tomcat(9.0.75)</li>
+						<li>Mariadb(10.5.19), HeidiSQL(11.3.0)</li>
+					</ul>
+					
                 </div>
                 <!-- /.container-fluid -->
 

@@ -217,7 +217,8 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">${targetYear}년 ${targetMonth+1}월 달력</h6>
-                            <p>날짜를 누르면 수입/지출을 추가 할수있습니다.</p>                           
+                            <br>
+                            <p>날짜를 누르면 수입/지출을 추가 할 수 있는 페이지로 이동합니다.</p>                           
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

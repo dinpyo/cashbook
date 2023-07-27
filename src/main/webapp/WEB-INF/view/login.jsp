@@ -58,12 +58,12 @@
                                     </div>
                                     <form class="user" id="loginForm" method="post" action="${pageContext.request.contextPath}/off/login">
                                         <div class="form-group">       
-											<input type="text" class="form-control form-control-user" name="memberId" id="memberId" placeholder="아이디">
+											<input type="text" class="form-control form-control-user" name="memberId" id="memberId" value="admin" placeholder="아이디">
 											<span style="color: red;" id="memberIdMsg"></span>
                                         </div>
                                                 
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" name="memberPw" id="memberPw" placeholder="비밀번호">
+                                            <input type="password" class="form-control form-control-user" name="memberPw" id="memberPw" value="1234" placeholder="비밀번호">
                                             <span style="color: red;" id="memberPwMsg"></span>    
                                         </div>
                                         <br>
