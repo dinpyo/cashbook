@@ -74,17 +74,9 @@
 	                                            </div>
 	                                        </div>                                        
                                         <button class="btn btn-primary btn-user btn-block" id="loginBtn" type="button">로그인</button> 
-                                        <hr>
-          
+                                        <hr>     
                                     </form>
-                                    
-                                    <!-- 
-                                    	<hr>
-	                                    <div class="text-center">
-	                                        <a class="small" href="forgot-password.html">비밀번호 찾기</a>
-	                                    </div>
-                                    -->
-                                    
+                                   
                                     <div class="text-center">
                                         <a class="small" href="${pageContext.request.contextPath}/off/addMember">계정만들기</a>    
                                     </div>

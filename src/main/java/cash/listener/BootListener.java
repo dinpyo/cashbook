@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class BootListener implements ServletContextListener { // 톰캣이 켜질떄 실행된다.
 
+	@Override
     public void contextInitialized(ServletContextEvent sce)  { 
     	System.out.println("실행확인 : ServletContextListener.contextInitialized()");
         

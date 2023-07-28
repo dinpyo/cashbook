@@ -27,11 +27,10 @@ public class LoginController extends HttpServlet {
 				if(c.getName().equals("cookieLoginId") == true) {
 					// request.setAttribute에 찾은 쿠키값 저장
 					request.setAttribute("cookieId", c.getValue());
-					System.out.println(request.getAttribute("cookieId") + ": 저장한 cookieId");
+					System.out.println("저장한 cookieId: "+request.getAttribute("cookieId"));
 				}
 			}
 		}
-		
 		request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
 	}
 	

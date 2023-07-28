@@ -14,7 +14,6 @@ import cash.vo.Member;
 @WebServlet("/on/removeMember")
 public class RemoveMemberController extends HttpServlet {
 	
-
 	// 비밀번호 입력 폼
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
