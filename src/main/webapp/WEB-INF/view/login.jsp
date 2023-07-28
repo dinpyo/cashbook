@@ -57,7 +57,7 @@
                                         <h1 class="h4 text-gray-900 mb-4">계정 로그인</h1>
                                     </div>
                                     <form class="user" id="loginForm" method="post" action="${pageContext.request.contextPath}/off/login">
-                                        <div class="form-group">       
+                                        <div class="form-group"> <!-- 쿠키 값을 가져오려면 value="${cookieId} 넣어야 된다. -->      									
 											<input type="text" class="form-control form-control-user" name="memberId" id="memberId" value="admin" placeholder="아이디">
 											<span style="color: red;" id="memberIdMsg"></span>
                                         </div>
@@ -66,30 +66,16 @@
                                             <input type="password" class="form-control form-control-user" name="memberPw" id="memberPw" value="1234" placeholder="비밀번호">
                                             <span style="color: red;" id="memberPwMsg"></span>    
                                         </div>
-                                        <br>
                                         
-                                        <!-- 
 	                                        <div class="form-group">
 	                                            <div class="custom-control custom-checkbox small">
-	                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-	                                                <label class="custom-control-label" for="customCheck">Remember
-	                                                    Me</label>
+	                                                <input type="checkbox" class="custom-control-input" name="idSave" id="customCheck" value="y" checked="checked">
+	                                                <label class="custom-control-label" for="customCheck">아이디 기억</label>
 	                                            </div>
-	                                        </div>
-                                         -->
-                                       
+	                                        </div>                                        
                                         <button class="btn btn-primary btn-user btn-block" id="loginBtn" type="button">로그인</button> 
                                         <hr>
-                                        
-                                        <!-- 
-	                                        <a href="index.html" class="btn btn-google btn-user btn-block">
-	                                            <i class="fab fa-google fa-fw"></i> 구글 계정으로 로그인
-	                                        </a>
-	                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-	                                            <i class="fab fa-facebook-f fa-fw"></i> 페이스북 계정으로 로그인
-	                                        </a>
-                                        -->
-                                        
+          
                                     </form>
                                     
                                     <!-- 
