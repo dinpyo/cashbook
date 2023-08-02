@@ -78,8 +78,5 @@ public class Cashbook {
 		return "Cashbook [cashbookNo=" + cashbookNo + ", memberId=" + memberId + ", category=" + category
 				+ ", cashbookDate=" + cashbookDate + ", price=" + price + ", memo=" + memo + ", updatedate="
 				+ updatedate + ", createdate=" + createdate + "]";
-	}
-	
-	
-	
+	}	
 }

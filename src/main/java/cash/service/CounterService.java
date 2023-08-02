@@ -13,7 +13,7 @@ public class CounterService {
 		Connection conn = null;
 		try {
 			// conn.setAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			counterDao.insertCounter(conn);
 		} catch(Exception e) {
 			// conn.rollback();
@@ -33,7 +33,7 @@ public class CounterService {
 		Connection conn = null;
 		try {
 			// conn.setAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			counterDao.updateCounter(conn);
 		} catch(Exception e) {
 			// conn.rollback();
@@ -54,7 +54,7 @@ public class CounterService {
 		Connection conn = null;
 		try {
 			// conn.setAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			counter = counterDao.selectCounterCurdate(conn);
 		} catch(Exception e) {
 			// conn.rollback();
@@ -76,7 +76,7 @@ public class CounterService {
 		Connection conn = null;
 		try {
 			// conn.setAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			totalCounter = counterDao.selectCounterAll(conn);
 		} catch(Exception e) {
 			// conn.rollback();

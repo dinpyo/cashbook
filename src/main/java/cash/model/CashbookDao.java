@@ -339,18 +339,5 @@ public class CashbookDao {
 			}
 		}
 		return row;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 }

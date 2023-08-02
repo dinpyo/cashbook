@@ -20,7 +20,7 @@ public class HashtagService {
 		int row = 0;
 		try {
 			// conn.getAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			row = hashtagDao.insertHashtag(conn, hashtag);
 		} catch(Exception e) {
 			// conn.rollback();
@@ -41,7 +41,7 @@ public class HashtagService {
 		List<Map<String, Object>> list = new ArrayList<>();
 		try {
 			// conn.getAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			list = hashtagDao.selectWordCountByMonth(conn, memberId, targetYear, targetMonth);
 		} catch(Exception e) {
 			// conn.rollback();
@@ -62,7 +62,7 @@ public class HashtagService {
 		List<Map<String, Object>> list = new ArrayList<>();
 		try {
 			// conn.getAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			list = hashtagDao.selectWordByMonthList(conn, memberId, targetYear, targetMonth, word);
 		} catch(Exception e) {
 			// conn.rollback();
@@ -76,6 +76,4 @@ public class HashtagService {
 		}
 		return list;
 	}
-	
-	
 }

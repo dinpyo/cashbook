@@ -17,7 +17,7 @@ public class MemberService {
 		int row = 0;
 		try {
 			// conn.getAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			row = memberDao.insertMember(conn, member);
 		} catch(Exception e) {
 			// conn.rollback();
@@ -38,7 +38,7 @@ public class MemberService {
 		Member returnMember = null;
 		try {
 			// conn.getAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			returnMember = memberDao.selectMemberById(conn, paramMember);
 		} catch(Exception e) {
 			// conn.rollback();
@@ -59,7 +59,7 @@ public class MemberService {
 		Member returnMemberOne = null;
 		try {
 			// conn.getAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			returnMemberOne = memberDao.selectMemberOne(conn, memberId);
 		} catch(Exception e) {
 			// conn.rollback();
@@ -80,7 +80,7 @@ public class MemberService {
 		int row = 0;
 		try {
 			// conn.getAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			row = memberDao.updateMember(conn, memberId, memberPw, newPw1, newPw2);
 		} catch(Exception e) {
 			// conn.rollback();
@@ -101,7 +101,7 @@ public class MemberService {
 		int row = 0;
 		try {
 			// conn.getAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			row = memberDao.deleteMember(conn, memberId, memberPw);
 		} catch(Exception e) {
 			// conn.rollback();
@@ -115,5 +115,4 @@ public class MemberService {
 		}	
 		return row;
 	}
-	
 }

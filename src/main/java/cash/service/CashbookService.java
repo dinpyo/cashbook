@@ -21,7 +21,7 @@ public class CashbookService {
 		List<Cashbook> list = new ArrayList<Cashbook>();
 		try {
 			// conn.getAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			list = cashbookDao.selectCashbookListByMonth(conn, memberId, targetYear, targetMonth);
 		} catch(Exception e1) {
 			// conn.rollback();
@@ -42,7 +42,7 @@ public class CashbookService {
 		List<Cashbook> list = new ArrayList<Cashbook>();
 		try {
 			// conn.getAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			list = cashbookDao.selectCashbookOne(conn, memberId, targetYear, targetMonth, targetDate);
 		} catch(Exception e1) {
 			// conn.rollback();
@@ -63,7 +63,7 @@ public class CashbookService {
 		int row = 0;
 		try {
 			// conn.getAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			row = cashbookDao.insertCashbook(conn, cashbook);
 		} catch(Exception e1) {
 			// conn.rollback();
@@ -86,7 +86,7 @@ public class CashbookService {
 		int hashtagRow = 0;
 		int totalRow = 0;
 		try {
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			
 			// 트랜잭션 처리를 위해 오토 커밋을 종료
 			conn.setAutoCommit(false);
@@ -125,7 +125,7 @@ public class CashbookService {
 		List<Cashbook> list = new ArrayList<Cashbook>();
 		try {
 			// conn.getAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			list = cashbookDao.selectCashbookListByTag(conn, memberId, word, beginRow, rowPerPage);
 		} catch(Exception e1) {
 			// conn.rollback();
@@ -145,7 +145,7 @@ public class CashbookService {
 		this.cashbookDao = new CashbookDao();
 		int row = 0;
 		try {
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			row = cashbookDao.selectCashbookListByTagCnt(conn, memberId, word);
 		} catch(Exception e1) {
 			e1.printStackTrace();
@@ -164,7 +164,7 @@ public class CashbookService {
 		this.cashbookDao = new CashbookDao();
 		int row = 0;
 		try {
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			row = cashbookDao.selectYearTotalMinus(conn, memberId, targetYear);
 		} catch(Exception e1) {
 			e1.printStackTrace();
@@ -183,7 +183,7 @@ public class CashbookService {
 		this.cashbookDao = new CashbookDao();
 		int row = 0;
 		try {
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			row = cashbookDao.selectYearTotalPlus(conn, memberId, targetYear);
 		} catch(Exception e1) {
 			e1.printStackTrace();
@@ -202,7 +202,7 @@ public class CashbookService {
 		this.cashbookDao = new CashbookDao();
 		int row = 0;
 		try {
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			row = cashbookDao.selectMonthTotalMinus(conn, memberId, targetMonth);
 		} catch(Exception e1) {
 			e1.printStackTrace();
@@ -221,7 +221,7 @@ public class CashbookService {
 		this.cashbookDao = new CashbookDao();
 		int row = 0;
 		try {
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.34.33.114:3306/cash","root","java1234");
 			row = cashbookDao.selectMonthTotalPlus(conn, memberId, targetMonth);
 		} catch(Exception e1) {
 			e1.printStackTrace();
@@ -233,7 +233,5 @@ public class CashbookService {
 			}
 		}
 		return row;
-	}
-	
-	
+	}	
 }

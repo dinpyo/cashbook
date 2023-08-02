@@ -48,5 +48,4 @@ public class Member {
 		return "Member [memberId=" + memberId + ", memberPw=" + memberPw + ", updatedate=" + updatedate
 				+ ", createdate=" + createdate + "]";
 	}
-
 }

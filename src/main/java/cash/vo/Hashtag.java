@@ -45,7 +45,4 @@ public class Hashtag {
 		return "Hashtag [cashbookNo=" + cashbookNo + ", word=" + word + ", updatedate=" + updatedate + ", createdate="
 				+ createdate + "]";
 	}
-	
-	
-	
 }
