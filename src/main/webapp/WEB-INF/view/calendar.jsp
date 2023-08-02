@@ -125,7 +125,7 @@
                     <!-- 상단바 -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-							${targetYear}년 ${targetMonth+1}월 달력
+							달력
                         </div>
                     </form>
 
@@ -188,7 +188,7 @@
                 	<!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">달력 해시태그 전체</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">전체 해시태그</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -216,9 +216,7 @@
                     </div>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">가계부</h6>
-                            <br>
-                            <p>날짜를 누르면 수입/지출을 추가하거나 삭제 할 수 있습니다.</p>                           
+                            <h6 class="m-0 font-weight-bold text-primary">가계부&nbsp;<span style="color: black;">(날짜를 눌러 추가, 삭제 가능)</span></h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -229,8 +227,18 @@
 								request.getAttribute("targetYear") -- requestScope.targetYear 
 								(requestScope는 생략가능)
 								형변환연산이 필요없다(EL이 자동으로 처리)
-							-->							
-                            	<table class="table table-bordered" id="dataTable" style="width: 100%; height: 900px;" cellspacing="0">
+							-->	
+							<div style="text-align: center;">
+								<a href="${pageContext.request.contextPath}/on/calendar?targetYear=${targetYear}&targetMonth=${targetMonth-1}">
+									<img src="${pageContext.request.contextPath}/assets/img/left.jpg" style="width: 80px; height: 70px;">
+								</a>
+								<span style="font-size: 20pt;">${targetYear}년 ${targetMonth+1}월</span>
+								<a href="${pageContext.request.contextPath}/on/calendar?targetYear=${targetYear}&targetMonth=${targetMonth+1}">
+									<img src="${pageContext.request.contextPath}/assets/img/right.jpg" style="width: 80px; height: 70px;">
+								</a>
+							</div>
+							<br>					
+                            	<table class="table table-bordered" id="dataTable" style="width: 100%; height: 800px;">
                                     <thead>
                                         <tr>
                                             <th style="text-align: center;"><span style="color:red;">일</span></th>
@@ -291,17 +299,9 @@
 										</tr>
                                     </tbody>
                                 </table>
-								<div style="text-align: center;">
-									<a class="btn btn-primary" href="${pageContext.request.contextPath}/on/calendar?targetYear=${targetYear}&targetMonth=${targetMonth-1}">이전</a>
-									&nbsp;&nbsp;&nbsp;
-									<a class="btn btn-primary" href="${pageContext.request.contextPath}/on/calendar?targetYear=${targetYear}&targetMonth=${targetMonth+1}">다음</a>
-								</div>
                             </div>
                         </div>
                     </div>
-                    
-                    
-                    
                 </div>
                 <!-- /.container-fluid -->  
             </div>
