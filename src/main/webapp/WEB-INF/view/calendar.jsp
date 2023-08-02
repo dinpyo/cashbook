@@ -188,20 +188,6 @@
                 	<!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">전체 해시태그</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                            	<c:forEach var="m" items="${htList}">
-									<a style="color:#9900CC; text-decoration:none;" href="${pageContext.request.contextPath}/on/cashbookListByTag?word=${m.word}">
-										# ${m.word}&nbsp;  
-									</a>
-								</c:forEach>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">이달의 해시태그</h6>
                         </div>
                         <div class="card-body">
