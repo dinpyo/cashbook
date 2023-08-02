@@ -125,7 +125,7 @@
                     <!-- 상단바 -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-							가계부
+							${targetYear}년 ${targetMonth+1}월 달력
                         </div>
                     </form>
 
@@ -159,7 +159,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                                <span style="font-size: 18px;" class="mr-2 d-none d-lg-inline text-gray-600 small">${memberId}</span>
                                 <img class="img-profile rounded-circle"
                                     src="${pageContext.request.contextPath}/assets/img/undraw_profile.svg">
                             </a>
@@ -216,9 +216,9 @@
                     </div>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">${targetYear}년 ${targetMonth+1}월 달력</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">가계부</h6>
                             <br>
-                            <p>날짜를 누르면 수입/지출을 추가 할 수 있는 페이지로 이동합니다.</p>                           
+                            <p>날짜를 누르면 수입/지출을 추가하거나 삭제 할 수 있습니다.</p>                           
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

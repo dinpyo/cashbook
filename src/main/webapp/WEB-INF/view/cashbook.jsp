@@ -158,7 +158,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                                <span style="font-size: 18px;" class="mr-2 d-none d-lg-inline text-gray-600 small">${memberId}</span>
                                 <img class="img-profile rounded-circle"
                                     src="${pageContext.request.contextPath}/assets/img/undraw_profile.svg">
                             </a>
@@ -181,10 +181,84 @@
                 </nav>
                 <!-- 상단바 끝 -->
 				
-				<h1><span>&nbsp;<---- 메인메뉴에서 캘린더를 눌러주세요!!</span></h1>
-				
-                <!-- Begin Page Content -->
+				 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div style="font-size: 18px;" class="text-xs font-weight-bold text-primary text-uppercase mb-1">${targetMonth+1}월 수입</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">₩40,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div style="font-size: 18px;" class="text-xs font-weight-bold text-success text-uppercase mb-1">${targetMonth+1}월 지출</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">₩215,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div style="font-size: 18px;" class="text-xs font-weight-bold text-info text-uppercase mb-1">${targetYear}년 수입</div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">₩5,000</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div style="font-size: 18px;" class="text-xs font-weight-bold text-warning text-uppercase mb-1">${targetYear}년 지출</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">₩18</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
 					<br><br>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">캘린더API를 이용한 가계부 프로젝트</h1>

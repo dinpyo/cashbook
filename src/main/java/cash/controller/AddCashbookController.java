@@ -23,6 +23,10 @@ public class AddCashbookController extends HttpServlet {
 	// 입력 폼
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute("loginMember");
+		String memberId = member.getMemberId();
+		
 		// request 매개값
 		int targetYear = Integer.parseInt(request.getParameter("targetYear"));
 		int targetMonth = Integer.parseInt(request.getParameter("targetMonth"));
@@ -31,15 +35,14 @@ public class AddCashbookController extends HttpServlet {
 		request.setAttribute("targetYear", targetYear);
 		request.setAttribute("targetMonth", targetMonth);
 		request.setAttribute("targetDate", targetDate);
+		request.setAttribute("memberId", memberId);
 				
 		request.getRequestDispatcher("/WEB-INF/view/addCashbook.jsp").forward(request, response);
 	}
 	 
 	// 입력 액션
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		// session 검사
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("loginMember");
 		String memberId = member.getMemberId();

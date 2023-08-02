@@ -74,6 +74,8 @@ public class CalendarController extends HttpServlet {
 		request.setAttribute("beginBlank", beginBlank);
 		request.setAttribute("endBlank", endBlank);
 		
+		request.setAttribute("memberId", memberId);
+		
 		request.setAttribute("list", list);
 		request.setAttribute("htList", htList);
 		

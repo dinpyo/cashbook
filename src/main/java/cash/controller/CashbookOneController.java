@@ -36,6 +36,8 @@ public class CashbookOneController extends HttpServlet {
 		request.setAttribute("targetYear", targetYear);
 		request.setAttribute("targetMonth", targetMonth);
 		request.setAttribute("targetDate", targetDate);
+		request.setAttribute("memberId", memberId);
+		
 		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("/WEB-INF/view/cashbookOne.jsp").forward(request, response);

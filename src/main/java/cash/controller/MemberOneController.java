@@ -18,10 +18,9 @@ public class MemberOneController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// session 유효성 검사
 		HttpSession session = request.getSession();
-		Member loginMember = (Member)(session.getAttribute("loginMember"));
+		Member loginMember = (Member)(session.getAttribute("loginMember"));		
 		
-		// 모델 값 구하기(dao 메서드를 호출)
-		
+		// 모델 값 구하기(dao 메서드를 호출)	
 		MemberService memberService = new MemberService();
 		Member member = memberService.selectMemberOne(loginMember.getMemberId());
 		

@@ -54,6 +54,8 @@ public class CashbookListController extends HttpServlet {
 		request.setAttribute("word", word);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("lastPage", lastPage);
+		request.setAttribute("memberId", memberId);
+		
 		
 		request.getRequestDispatcher("/WEB-INF/view/cashbookListByTag.jsp").forward(request, response);
 	}

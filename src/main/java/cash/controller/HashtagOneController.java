@@ -36,6 +36,9 @@ public class HashtagOneController extends HttpServlet {
 		
 		request.setAttribute("targetYear", targetYear);
 		request.setAttribute("targetMonth", targetMonth);
+		
+		request.setAttribute("memberId", memberId);
+		
 	
 		// 출력하는 뷰
 		request.getRequestDispatcher("/WEB-INF/view/hashtagOne.jsp").forward(request, response);
