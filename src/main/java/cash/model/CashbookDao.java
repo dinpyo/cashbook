@@ -89,16 +89,16 @@ public class CashbookDao {
 		return list;
 	}
 	
-	// 3. 수입과 지출 입력
+	// 3. 수입/지출 내역 추가
 	// 반환값 : cashbook_no 키값
 	public int insertCashbook(Connection conn, Cashbook cashbook) {
 		int cashbookNo = 0;	
 		PreparedStatement stmt = null;
 		ResultSet rs = null; // 입력후 생성된 키값 반환
+		String sql = "INSERT INTO"
+				+ " cashbook(member_id, category, cashbook_date, price, memo, updatedate, createdate)"
+				+ " VALUES(?, ?, ?, ?, ?, NOW(), NOW())";
 		try {			
-			String sql = "INSERT INTO"
-					+ " cashbook(member_id, category, cashbook_date, price, memo, updatedate, createdate)"
-					+ " VALUES(?, ?, ?, ?, ?, NOW(), NOW())";
 			stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, cashbook.getMemberId());
 			stmt.setString(2, cashbook.getCategory());
@@ -106,7 +106,7 @@ public class CashbookDao {
 			stmt.setInt(4, cashbook.getPrice());
 			stmt.setString(5, cashbook.getMemo());
 			System.out.println(stmt);
-			int row = stmt.executeUpdate();
+			stmt.executeUpdate();
 			rs = stmt.getGeneratedKeys();
 			if(rs.next()) {
 				cashbookNo = rs.getInt(1);
@@ -122,6 +122,28 @@ public class CashbookDao {
 			}
 		}
 		return cashbookNo;
+	}
+	// 3-1. 수입/지출 내역 삭제
+	public int deleteCashbook(Connection conn, int cashbookNo) {
+		int row = 0;
+		PreparedStatement stmt = null;
+		String sql = "DELETE FROM cashbook"
+				+ " WHERE cashbook_no = ?";
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, cashbookNo);
+			System.out.println(stmt);
+			row = stmt.executeUpdate();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return row;
 	}
 	
 	// 4. 해쉬태그 별 전체 리스트

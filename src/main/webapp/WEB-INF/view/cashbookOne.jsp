@@ -195,6 +195,7 @@
 											<th>메모</th>
 											<th>수정날짜</th>
 											<th>작성날짜</th>
+											<th>삭제</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -207,6 +208,11 @@
 												<td>${c.memo}</td>		
 												<td>${c.updatedate}</td>
 												<td>${c.createdate}</td>
+												<td>
+													<a href="${pageContext.request.contextPath}/on/removeCashbook?cashbookNo=${c.cashbookNo}&targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${targetDate}">
+													삭제하기
+													</a>
+												</td>
 											</tr>
 										</c:forEach>
                                     </tbody>
