@@ -193,7 +193,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div style="font-size: 18px;" class="text-xs font-weight-bold text-primary text-uppercase mb-1">${targetMonth+1}월 수입</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">₩40,000</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">₩ ${monthTotalPlus}원</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -210,7 +210,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div style="font-size: 18px;" class="text-xs font-weight-bold text-success text-uppercase mb-1">${targetMonth+1}월 지출</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">₩215,000</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">₩ ${monthTotalMinus}원</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -229,7 +229,7 @@
                                             <div style="font-size: 18px;" class="text-xs font-weight-bold text-info text-uppercase mb-1">${targetYear}년 수입</div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">₩5,000</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">₩ ${yearTotalPlus}원</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -248,7 +248,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div style="font-size: 18px;" class="text-xs font-weight-bold text-warning text-uppercase mb-1">${targetYear}년 지출</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">₩18</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">₩ ${yearTotalMinus}원</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>

@@ -11,6 +11,7 @@ import cash.service.CashbookService;
 
 @WebServlet("/on/removeCashbook")
 public class RemoveCashbookController extends HttpServlet {
+	private CashbookService cashbookService;
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,7 +26,7 @@ public class RemoveCashbookController extends HttpServlet {
 		System.out.println(targetMonth);
 		System.out.println(targetDate);
 		
-		CashbookService cashbookService = new CashbookService();
+		this.cashbookService = new CashbookService();
 		
 		int row = cashbookService.deleteCashbook(cashbookNo);
 		System.out.println(row + "행의 개수");

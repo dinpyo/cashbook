@@ -221,4 +221,136 @@ public class CashbookDao {
 		return row;
 	}
 	
+	// 6-1. 이번년도 총 지출 금액
+	public int selectYearTotalMinus(Connection conn, String memberId, int targetYear) {
+		int row = 0;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT SUM(price)"
+				+ " FROM cashbook"
+				+ " WHERE member_id = ? AND category = '지출' AND YEAR(cashbook_date) = ?";
+		try {	
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, memberId);
+			stmt.setInt(2, targetYear);
+			System.out.println(stmt);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				row = rs.getInt(1);
+			}
+		} catch(Exception e1) {
+			e1.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+			} catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return row;
+	}
+	
+	// 6-2. 이번년도 총 수입 금액
+	public int selectYearTotalPlus(Connection conn, String memberId, int targetYear) {
+		int row = 0;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT SUM(price)"
+				+ " FROM cashbook\r\n"
+				+ " WHERE member_id = ? AND category = '수입' AND YEAR(cashbook_date) = ?";
+		try {	
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, memberId);
+			stmt.setInt(2, targetYear);
+			System.out.println(stmt);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				row = rs.getInt(1);
+			}
+		} catch(Exception e1) {
+			e1.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+			} catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return row;
+	}
+	
+	// 7-1. 이번달 총 지출 금액
+	public int selectMonthTotalMinus(Connection conn, String memberId, int targetMonth) {
+		int row = 0;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT SUM(price)"
+				+ " FROM cashbook"
+				+ " WHERE member_id = ? AND category = '지출' AND MONTH(cashbook_date) = ?";
+		try {	
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, memberId);
+			stmt.setInt(2, targetMonth);
+			System.out.println(stmt);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				row = rs.getInt(1);
+			}
+		} catch(Exception e1) {
+			e1.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+			} catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return row;
+	}
+	
+	// 7-2. 이번달 총 수입 금액
+	public int selectMonthTotalPlus(Connection conn, String memberId, int targetMonth) {
+		int row = 0;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT SUM(price)"
+				+ " FROM cashbook"
+				+ " WHERE member_id = ? AND category = '수입' AND MONTH(cashbook_date) = ?";
+		try {	
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, memberId);
+			stmt.setInt(2, targetMonth);
+			System.out.println(stmt);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				row = rs.getInt(1);
+			}
+		} catch(Exception e1) {
+			e1.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+			} catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return row;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
