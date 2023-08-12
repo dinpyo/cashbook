@@ -29,6 +29,7 @@ public class RemoveMemberController extends HttpServlet {
 		
 		MemberService memberService = new MemberService();
 		int row = memberService.deleteMember(loginMember.getMemberId(), memberPw);
+		
 		if(row==0) { // 회원탈퇴 실패시
 			System.out.println("회원탈퇴 실패");
 			response.sendRedirect(request.getContextPath()+"/on/removeMember");

@@ -3,7 +3,9 @@ package cash.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
+import cash.vo.Cashbook;
 import cash.vo.Member;
 
 public class MemberDao {
@@ -153,5 +155,38 @@ public class MemberDao {
 		}
 		return row;
 	}
-
+	
+	// 5-1. 회원 탈퇴시 id에 해당하는 cashbook 데이터 조회
+	public ArrayList<Cashbook> selectCashbookById(Connection conn, String memberId){
+		ArrayList<Cashbook> cashbookList = new ArrayList<>();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;	
+		String sql = "SELECT cashbook_no"
+					+ " FROM cashbook"
+					+ " WHERE member_id = ?";
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, memberId);
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				Cashbook cashbook = new Cashbook();
+				cashbook.setCashbookNo(rs.getInt("cashbook_no"));
+				cashbookList.add(cashbook);
+			}
+			System.out.println(cashbookList.size());
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return cashbookList;	
+	}
+	
 }
