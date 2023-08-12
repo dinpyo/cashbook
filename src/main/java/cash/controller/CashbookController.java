@@ -50,8 +50,8 @@ public class CashbookController extends HttpServlet {
 		// 년, 월 수입과 지출 금액
 		this.cashbookService = new CashbookService();
 		
-		int monthTotalMinus = cashbookService.selectMonthTotalMinus(memberId, targetMonth);
-		int monthTotalPlus = cashbookService.selectMonthTotalPlus(memberId, targetMonth);
+		int monthTotalMinus = cashbookService.selectMonthTotalMinus(memberId, targetMonth+1);
+		int monthTotalPlus = cashbookService.selectMonthTotalPlus(memberId, targetMonth+1);
 		int yearTotalMinus = cashbookService.selectYearTotalMinus(memberId, targetYear);
 		int yearTotalPlus = cashbookService.selectYearTotalPlus(memberId, targetYear);
 		

@@ -257,7 +257,7 @@ public class CashbookDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT SUM(price)"
-				+ " FROM cashbook\r\n"
+				+ " FROM cashbook"
 				+ " WHERE member_id = ? AND category = '수입' AND YEAR(cashbook_date) = ?";
 		try {	
 			stmt = conn.prepareStatement(sql);
