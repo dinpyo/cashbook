@@ -9,6 +9,8 @@
     <meta name="author" content="">
     
 	<title>계정삭제</title>
+	<!-- 파비콘 설정-->
+	<link rel="icon" href="${pageContext.request.contextPath}/assets/img/cashbook.png">
 	
 	<!-- Custom fonts for this template-->
     <link href="${pageContext.request.contextPath}/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
