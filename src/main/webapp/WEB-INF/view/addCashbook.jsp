@@ -193,8 +193,8 @@
 		                                        <tr>
 													<th>수입/지출</th>
 													<td>
-														<input type="radio" name="category" value="수입">수입
-														<input type="radio" name="category" value="지출">지출
+														<input type="radio" name="category" value="수입" required="required">수입
+														<input type="radio" name="category" value="지출" required="required">지출
 													</td>
 												</tr>
 												<tr>
